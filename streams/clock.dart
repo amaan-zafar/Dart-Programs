@@ -1,9 +1,21 @@
 main() async {
   Duration dur = Duration(seconds: 1);
   Stream<String> stream = Stream<String>.periodic(dur, callback);
-  await for (String s in stream) {
-    print(s);
-  }
+  // // Method 1
+  // await for (String s in stream) {
+  //   print(s);
+  // }
+
+  // // Method 2
+  // stream.forEach((element) {
+  //   print(element);
+  // });
+
+  // Method 3
+  stream.listen((event) {
+    print(event);
+  });
+
   return 0;
 }
 
